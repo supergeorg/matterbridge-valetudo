@@ -779,13 +779,7 @@ export class ValetudoPlatform extends MatterbridgeDynamicPlatform {
         this.log.info(`  Creating contact sensor: ${sensorName} (ID: ${sensorId})`);
 
         const sensor = new MatterbridgeEndpoint(contactSensor, { id: sensorId }, this.config.debug as boolean);
-        sensor.createDefaultBridgedDeviceBasicInformationClusterServer(
-          sensorName,
-          sensorId,
-          this.matterbridge.aggregatorVendorId,
-          'Valetudo',
-          name,
-        );
+        sensor.createDefaultBridgedDeviceBasicInformationClusterServer(sensorName, sensorId, this.matterbridge.aggregatorVendorId, 'Valetudo', name);
         sensor.createDefaultBooleanStateClusterServer(!needsReplacement); // true = closed = OK
 
         await this.registerDevice(sensor);
